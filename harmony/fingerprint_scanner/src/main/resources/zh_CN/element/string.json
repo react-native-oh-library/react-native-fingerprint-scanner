@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "模块描述"
+    },
+    {
+      "name": "Fingerprint_scannerAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "Fingerprint_scannerAbility_label",
+      "value": "label"
+    }
+  ]
+}
