@@ -1,8 +1,16 @@
 {
-  "name": "react-native-fingerprint-scanner",
-  "version": "6.0.0",
-  "description": "React Native Biometrics Scanner for Android and iOS",
+  "name": "@react-native-oh-tpl/react-native-fingerprint-scanner",
+  "version": "6.0.0-0.0.1",
+  "description": "React Native Biometrics Scanner for Android and iOS and harmony",
   "main": "index.js",
+  "harmony": {
+    "alias": "react-native-fingerprint-scanner",
+    "codegenConfig": {
+      "specPaths": [ 
+        "./src"
+      ]
+    }
+  },
   "keywords": [
     "react-native",
     "react-native-component",
@@ -19,13 +27,21 @@
     "auth",
     "face-id",
     "faceid",
-    "biometrics"
+    "biometrics",
+    "harmony"
   ],
   "peerDependencies": {
     "react-native": ">=0.60 <1.0.0"
   },
-  "homepage": "https://github.com/hieuvp/react-native-fingerprint-scanner#readme",
-  "repository": "https://github.com/hieuvp/react-native-fingerprint-scanner.git",
+  "dependencies": {
+    "react-native-fingerprint-scanner": "6.0.0"
+  },
+
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-native-oh-library/react-native-fingerprint-scanner.git"
+  },
+  "homepage": "https://github.com/react-native-oh-library/react-native-fingerprint-scanner#readme",
   "author": "Hieu Van (https://github.com/hieuvp)",
   "license": "MIT",
   "types": "index.d.ts",
