@@ -10,17 +10,18 @@ export class RNFingerprintScannerTurboModule extends TurboModule implements TM.F
   }
 
   userAuthInstance: any = null;
-  errorObj:{ message?: string | undefined; } ={
-  }
+  errorMessage: string = ''
 
 
   onAttempt(): { message?: string | undefined; } {
-    return this.errorObj
+    return {
+      message: this.errorMessage
+    }
   }
 
   authenticate(value: TM.FingerprintScannerNativeModule.authenticate): Promise<void> {
     return new Promise((resolve, reject) => {
-      this.errorObj = {}
+      this.errorMessage = ''
       // 设置认证参数
       const authParam: userIAM_userAuth.AuthParam = {
         challenge: new Uint8Array([49, 49, 49, 49, 49, 49]),
@@ -46,21 +47,19 @@ export class RNFingerprintScannerTurboModule extends TurboModule implements TM.F
               reject({
                 message: code.toString()
               })
-              that.errorObj = {
-                message: code.toString()
-              }
+              that.errorMessage = code.toString()
               Logger.info('userAuthInstance callback result = ', code);
 
             }
             that.userAuthInstance.off('result');
+            that.userAuthInstance = null
+
           }
         });
 
       } catch (error) {
         const err: BusinessError = error as BusinessError;
-        this.errorObj = {
-          message: err?.code.toString()
-        }
+        this.errorMessage = err?.code.toString()
         console.info(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
         Logger.error('失败', JSON.stringify(error));
         reject({
@@ -72,18 +71,16 @@ export class RNFingerprintScannerTurboModule extends TurboModule implements TM.F
 
 
   isSensorAvailable(): Promise<string> {
-    this.errorObj = {}
+    this.errorMessage = ''
     return new Promise((resolve, reject) => {
       try {
         userIAM_userAuth.getAvailableStatus(userIAM_userAuth.UserAuthType.FINGERPRINT,
           userIAM_userAuth.AuthTrustLevel.ATL1);
         resolve('Biometrics')
-        this.errorObj = {}
+        this.errorMessage = ''
       } catch (error) {
         const err: BusinessError = error as BusinessError;
-        this.errorObj = {
-          message: err?.code.toString()
-        }
+        this.errorMessage = err?.code.toString()
         reject({
           message: err?.code.toString()
         })
@@ -94,9 +91,8 @@ export class RNFingerprintScannerTurboModule extends TurboModule implements TM.F
   }
 
   release(): void {
-    if (!this.errorObj?.message) {
+    if (!this.errorMessage) {
       this.userAuthInstance?.cancel()
-
     }
   }
 }
