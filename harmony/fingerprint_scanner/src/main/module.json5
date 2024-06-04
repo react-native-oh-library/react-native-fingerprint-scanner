@@ -1,0 +1,16 @@
+{
+  "module": {
+    "name": "fingerprint_scanner",
+    "type": "har",
+    "deviceTypes": [
+      "default",
+      "tablet",
+      "2in1"
+    ],
+    "requestPermissions":[
+      {
+        "name" : "ohos.permission.ACCESS_BIOMETRIC",
+      }
+    ]
+  }
+}

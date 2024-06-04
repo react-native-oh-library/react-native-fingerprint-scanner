@@ -1,0 +1,16 @@
+{
+  "string": [
+    {
+      "name": "module_desc",
+      "value": "module description"
+    },
+    {
+      "name": "Fingerprint_scannerAbility_desc",
+      "value": "description"
+    },
+    {
+      "name": "Fingerprint_scannerAbility_label",
+      "value": "label"
+    }
+  ]
+}

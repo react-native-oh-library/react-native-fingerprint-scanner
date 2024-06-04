@@ -166,6 +166,8 @@ export interface FingerPrintProps {
   authenticate: (
     platformProps: AuthenticateIOS | AuthenticateAndroid
   ) => Promise<void>;
+  
+  onAttempt: () => {message?: string}
 }
 
 declare const FingerprintScanner: FingerPrintProps;
