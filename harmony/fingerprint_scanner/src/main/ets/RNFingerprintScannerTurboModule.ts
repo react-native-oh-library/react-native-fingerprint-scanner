@@ -72,8 +72,6 @@ export class RNFingerprintScannerTurboModule extends TurboModule implements TM.F
                 message: code.toString()
               })
               that.errorMessage = code.toString()
-              Logger.info('userAuthInstance callback result = ', code);
-
             }
             that.userAuthInstance.off('result');
             that.userAuthInstance = null
@@ -84,8 +82,7 @@ export class RNFingerprintScannerTurboModule extends TurboModule implements TM.F
       } catch (error) {
         const err: BusinessError = error as BusinessError;
         this.errorMessage = err?.code.toString()
-        console.info(`auth catch error. Code is ${err?.code}, message is ${err?.message}`);
-        Logger.error('失败', JSON.stringify(error));
+        Logger.error('TAG auth catch error.', JSON.stringify(error));
         reject({
           message: err?.code.toString()
         })
@@ -108,7 +105,7 @@ export class RNFingerprintScannerTurboModule extends TurboModule implements TM.F
         reject({
           message: err?.code.toString()
         })
-        Logger.error('current auth trust level is not supported. ' + JSON.stringify(err));
+        Logger.error('TAG current auth trust level is not supported. ' + JSON.stringify(err));
       }
     });
 
