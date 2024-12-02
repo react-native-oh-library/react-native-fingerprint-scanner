@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "react-native-fingerprint-scanner",
+        "License": "MIT License",
+        "License File": "https://github.com/hieuvp/react-native-fingerprint-scanner?tab=readme-ov-file#license",
+        "Version Number": "6.0.0-0.0.2",
+        "Owner" : "xiafeng@huawei.com",
+        "Upstream URL": "https://github.com/react-native-oh-library/react-native-fingerprint-scanner",
+        "Description": "React Native Biometrics Scanner for Android and iOS and harmony"
+    }
+]
